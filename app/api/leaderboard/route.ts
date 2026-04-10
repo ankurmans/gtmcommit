@@ -15,7 +15,7 @@ export async function GET(request: NextRequest) {
     // Return newest profiles for "Recent Builders" feed
     const { data } = await supabase
       .from('profiles')
-      .select('username, display_name, avatar_url, role, company, gtmcommit_score, gtmcommit_tier, created_at')
+      .select('username, display_name, avatar_url, role, company, gtmcommit_score, gtmcommit_tier, looking_for_work, created_at')
       .gt('gtmcommit_score', 0)
       .order('created_at', { ascending: false })
       .limit(limit);
@@ -24,7 +24,7 @@ export async function GET(request: NextRequest) {
 
   let query = supabase
     .from('profiles')
-    .select('username, display_name, avatar_url, role, company, gtmcommit_score, gtmcommit_tier')
+    .select('username, display_name, avatar_url, role, company, gtmcommit_score, gtmcommit_tier, looking_for_work')
     .gt('gtmcommit_score', 0)
     .order('gtmcommit_score', { ascending: false })
     .limit(limit);

@@ -27,6 +27,7 @@ export interface Profile {
   is_agent_builder: boolean;
   agent_builder_signals: string[];
   profile_completeness: number;
+  activation_emails_sent: string[];
   created_at: string;
   updated_at: string;
 }
@@ -295,6 +296,7 @@ export interface LeaderboardEntry {
   gtmcommit_tier: GtmCommitTier;
   top_tools: string[];
   is_agent_builder: boolean;
+  looking_for_work?: boolean;
 }
 
 // ============================================================

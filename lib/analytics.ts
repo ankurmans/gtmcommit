@@ -172,4 +172,8 @@ export const analytics = {
   // Set user properties that persist across sessions
   setPersonProperties: (properties: Record<string, any>) =>
     posthog.people.set(properties),
+
+  // Generic event tracking for new features
+  track: (event: string, properties?: Record<string, any>) =>
+    posthog.capture(event, properties),
 };

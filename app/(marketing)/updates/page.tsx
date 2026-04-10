@@ -6,6 +6,41 @@ export const metadata = { title: 'Updates', description: 'What we\'ve shipped an
 
 const UPDATES = [
   {
+    date: 'April 10, 2026',
+    entries: [
+      {
+        type: 'feat' as const,
+        title: 'Ship Summary generator',
+        description: 'Copy-pasteable credential text in 4 formats (full, LinkedIn, Twitter, email signature). Every copy embeds your profile URL for viral reach.',
+      },
+      {
+        type: 'feat' as const,
+        title: 'Enriched tool pages with SEO',
+        description: 'All 7 tool pages now have spotlight sections, GTM use cases, FAQs with schema markup, and cross-links to roles. Better for SEO and discovery.',
+      },
+      {
+        type: 'feat' as const,
+        title: 'Open to Work badge',
+        description: '"Open to Work" badge now shows on profiles and leaderboard for users who toggle it on. Makes talent discoverable.',
+      },
+      {
+        type: 'feat' as const,
+        title: 'Competitive intel on dashboard',
+        description: 'See your rank among your role, your position among tool users, and how many points until you jump a rank.',
+      },
+      {
+        type: 'feat' as const,
+        title: 'Email activation sequence',
+        description: 'Day 3/7/14 onboarding emails nudging profile completion, sharing, and community engagement.',
+      },
+      {
+        type: 'feat' as const,
+        title: 'Weekly Top Builders spotlight',
+        description: 'Weekly email highlighting the 3 biggest score movers and top 5 leaderboard. Creates FOMO and rewards active builders.',
+      },
+    ],
+  },
+  {
     date: 'April 6, 2026',
     entries: [
       {

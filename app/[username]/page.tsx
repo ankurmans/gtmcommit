@@ -13,11 +13,12 @@ import CertificationsDisplay from '@/components/profile/Certifications';
 import VouchSection from '@/components/profile/VouchSection';
 import PoweredByBadge from '@/components/profile/PoweredByBadge';
 import ShareButton from '@/components/shared/ShareButton';
+import CopySummary from '@/components/profile/CopySummary';
 import VisitorCTA from '@/components/profile/VisitorCTA';
 import ProfileViewTracker from '@/components/profile/ProfileViewTracker';
 import PlatformLinks from '@/components/profile/PlatformLinks';
 import TrackedExternalLink from '@/components/profile/TrackedExternalLink';
-import { LuFlame, LuGlobe, LuLinkedin, LuExternalLink, LuBot } from 'react-icons/lu';
+import { LuFlame, LuGlobe, LuLinkedin, LuExternalLink, LuBot, LuBriefcase } from 'react-icons/lu';
 import { FaXTwitter } from 'react-icons/fa6';
 import Navbar from '@/components/shared/Navbar';
 import Footer from '@/components/landing/Footer';
@@ -117,8 +118,13 @@ export default async function ProfilePage({ params }: PageProps) {
               {profile.bio && (
                 <p className="text-xs text-fg-secondary mt-1 line-clamp-2">{profile.bio}</p>
               )}
-              {(profile.is_agent_builder || profile.current_streak > 0) && (
+              {(profile.looking_for_work || profile.is_agent_builder || profile.current_streak > 0) && (
                 <div className="flex flex-wrap gap-1.5 mt-1.5">
+                  {profile.looking_for_work && (
+                    <span className="inline-flex items-center gap-1 text-xs font-semibold px-2 py-0.5 rounded-full bg-green-100 text-green-700">
+                      <LuBriefcase size={12} /> Open to Work
+                    </span>
+                  )}
                   {profile.is_agent_builder && (
                     <span className="inline-flex items-center gap-1 text-xs font-semibold px-2 py-0.5 rounded-full bg-purple-100 text-purple-700">
                       <LuBot size={12} /> Agent Builder
@@ -167,6 +173,7 @@ export default async function ProfilePage({ params }: PageProps) {
 
             {/* Share actions */}
             <ShareButton url={`${appUrl}/${profile.username}`} title={`${profile.display_name}'s GTM Commit — Score: ${profile.gtmcommit_score}`} score={profile.gtmcommit_score} tier={profile.gtmcommit_tier} />
+            <CopySummary username={profile.username} />
             <a href={`/compare/${profile.username}/`} className="btn-ghost btn-sm text-xs">Compare</a>
           </div>
 

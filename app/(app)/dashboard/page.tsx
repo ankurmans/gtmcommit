@@ -7,6 +7,7 @@ import TierProgressBar from '@/components/dashboard/TierProgressBar';
 import ScoreBreakdownDrawer from '@/components/dashboard/ScoreBreakdownDrawer';
 import MilestoneCard from '@/components/dashboard/MilestoneCard';
 import LeaderboardRankCard from '@/components/dashboard/LeaderboardRankCard';
+import CompetitiveIntel from '@/components/dashboard/CompetitiveIntel';
 import ProfileViews from '@/components/dashboard/ProfileViews';
 import ReferralSection from '@/components/dashboard/ReferralSection';
 import EmbedCodeGenerator from '@/components/dashboard/EmbedCodeGenerator';
@@ -32,10 +33,19 @@ export default async function DashboardPage() {
   if (!profile) redirect('/login');
 
   const admin = createAdminClient();
+  // Build role rank query conditionally
+  const roleRankQuery = profile.role
+    ? admin.from('profiles').select('*', { count: 'exact', head: true }).eq('role', profile.role).gt('gtmcommit_score', profile.gtmcommit_score)
+    : Promise.resolve({ count: null });
+  const roleTotalQuery = profile.role
+    ? admin.from('profiles').select('*', { count: 'exact', head: true }).eq('role', profile.role).gt('gtmcommit_score', 0)
+    : Promise.resolve({ count: null });
+
   const [
     toolsRes, syncJobRes, videosRes, contentRes, certsRes,
     milestonesRes, viewsWeekRes, viewsTotalRes, referralCountRes,
     rankRes, totalBuildersRes, challengesRes,
+    roleRankRes, roleTotalRes, nextRankRes,
   ] = await Promise.all([
     admin.from('tool_declarations').select('*').eq('profile_id', profile.id),
     admin.from('github_sync_jobs').select('*').eq('profile_id', profile.id).order('created_at', { ascending: false }).limit(1),
@@ -49,6 +59,10 @@ export default async function DashboardPage() {
     admin.from('profiles').select('*', { count: 'exact', head: true }).gt('gtmcommit_score', profile.gtmcommit_score),
     admin.from('profiles').select('*', { count: 'exact', head: true }).gt('gtmcommit_score', 0),
     admin.from('profile_challenges').select('*').eq('profile_id', profile.id).order('started_at', { ascending: false }),
+    roleRankQuery,
+    roleTotalQuery,
+    // Get the score of the person just above to calculate gap
+    admin.from('profiles').select('gtmcommit_score').gt('gtmcommit_score', profile.gtmcommit_score).order('gtmcommit_score', { ascending: true }).limit(1),
   ]);
 
   const tools = toolsRes.data || [];
@@ -63,6 +77,15 @@ export default async function DashboardPage() {
   const rank = (rankRes.count || 0) + 1;
   const totalBuilders = totalBuildersRes.count || 0;
   const challenges = challengesRes.data || [];
+  const roleRank = roleRankRes.count != null ? (roleRankRes.count || 0) + 1 : null;
+  const roleTotalBuilders = (roleTotalRes.count as number) || 0;
+  const nextRankScore = (nextRankRes as any).data?.[0]?.gtmcommit_score ?? null;
+  const scoreGap = nextRankScore != null ? nextRankScore - profile.gtmcommit_score : null;
+
+  // Compute top tool rank (tool with most commits)
+  const topTool = tools.length > 0
+    ? tools.reduce((best: any, t: any) => (t.verified_commit_count > (best?.verified_commit_count || 0) ? t : best), null)
+    : null;
 
   // Fetch daily views for sparkline (last 7 days)
   const dailyViews: number[] = [];
@@ -76,6 +99,20 @@ export default async function DashboardPage() {
       .gte('viewed_at', day)
       .lt('viewed_at', nextDay);
     dailyViews.push(count || 0);
+  }
+
+  // Get tool rank if user has a top tool
+  let topToolRank: { tool: string; rank: number; total: number } | null = null;
+  if (topTool?.tool_name) {
+    const [toolHigherRes, toolTotalRes] = await Promise.all([
+      admin.from('tool_declarations').select('*', { count: 'exact', head: true }).eq('tool_name', topTool.tool_name).gt('verified_commit_count', topTool.verified_commit_count),
+      admin.from('tool_declarations').select('*', { count: 'exact', head: true }).eq('tool_name', topTool.tool_name),
+    ]);
+    topToolRank = {
+      tool: topTool.tool_name,
+      rank: (toolHigherRes.count || 0) + 1,
+      total: toolTotalRes.count || 0,
+    };
   }
 
   const breakdown = (profile.score_breakdown || { tier1: 0, tier2: 0, tier3: 0, total: 0, detail: {} }) as ScoreBreakdown;
@@ -152,11 +189,22 @@ export default async function DashboardPage() {
       <div className="space-y-4">
         <h2 className="text-xs font-bold text-fg-muted uppercase tracking-wider">Stats & Milestones</h2>
 
-        {/* Row 1: Leaderboard + Profile Views — always both present */}
+        {/* Row 1: Leaderboard + Competitive Intel */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <LeaderboardRankCard rank={rank} totalBuilders={totalBuilders} />
-          <ProfileViews viewsThisWeek={viewsThisWeek} viewsTotal={viewsTotal} dailyViews={dailyViews} />
+          <CompetitiveIntel
+            rank={rank}
+            totalBuilders={totalBuilders}
+            roleRank={roleRank}
+            roleTotalBuilders={roleTotalBuilders}
+            roleName={profile.role}
+            topToolRank={topToolRank}
+            scoreGap={scoreGap}
+          />
         </div>
+
+        {/* Row 2: Profile Views */}
+        <ProfileViews viewsThisWeek={viewsThisWeek} viewsTotal={viewsTotal} dailyViews={dailyViews} />
 
         {/* Row 2: Milestones — full width when present, nothing when absent */}
         {hasMilestones && (

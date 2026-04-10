@@ -2,7 +2,7 @@
 
 import type { LeaderboardEntry } from '@/types';
 import Link from 'next/link';
-import { LuMedal, LuBot } from 'react-icons/lu';
+import { LuMedal, LuBot, LuBriefcase } from 'react-icons/lu';
 import { TierBadge } from '@/components/shared/TierIcon';
 import Avatar from '@/components/shared/Avatar';
 import { analytics } from '@/lib/analytics';
@@ -20,6 +20,9 @@ export default function RankCard({ entry, rank }: { entry: LeaderboardEntry; ran
         <div className="font-semibold truncate">{entry.display_name}</div>
         <div className="text-xs text-fg-muted truncate">@{entry.username}{entry.role && ` · ${entry.role}`}</div>
       </div>
+      {entry.looking_for_work && (
+        <span className="badge bg-green-100 text-green-700 text-[10px]"><LuBriefcase size={10} /> Open</span>
+      )}
       {entry.is_agent_builder && (
         <span className="badge bg-purple-100 text-purple-700"><LuBot size={12} /></span>
       )}
