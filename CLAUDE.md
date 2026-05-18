@@ -1,18 +1,18 @@
-# CLAUDE.md — ShipCred
+# CLAUDE.md — GTM Commit
 
 ## Project Overview
 
-**Product name:** ShipCred
-**Domain:** shipcred.io
+**Product name:** GTM Commit
+**Domain:** gtmcommit.com
 **Tagline:** Talk is cheap. Commits aren't.
 **Category:** AI-native GTM community / Proof-of-work professional network
 **Target:** Marketers, SDRs, account executives, growth operators who use AI coding tools (Claude Code, Cursor, Windsurf, VS Code + Copilot) to do GTM work — not just talk about it.
 
 ### What This Is
 
-ShipCred is a community platform where AI-native GTM professionals create verified profiles showing what they've actually shipped. Users connect their GitHub (including private repos via OAuth), and ShipCred automatically detects AI-assisted commits (Claude Code trailers, Copilot bot signatures, Aider co-author tags) to generate a proof-of-work score.
+GTM Commit is a community platform where AI-native GTM professionals create verified profiles showing what they've actually shipped. Users connect their GitHub (including private repos via OAuth), and GTM Commit automatically detects AI-assisted commits (Claude Code trailers, Copilot bot signatures, Aider co-author tags) to generate a proof-of-work score.
 
-The profile at shipcred.io/username becomes the user's public credential — shareable on LinkedIn, Twitter, and job applications — proving they're a doer, not just a talker.
+The profile at gtmcommit.com/username becomes the user's public credential — shareable on LinkedIn, Twitter, and job applications — proving they're a doer, not just a talker.
 
 ### What This Is NOT
 
@@ -23,20 +23,20 @@ The profile at shipcred.io/username becomes the user's public credential — sha
 
 ### Core Thesis
 
-The GTM Engineer role grew 205% from 2024-2025. Companies like Ramp, Intercom, and Apollo are hiring marketers who commit code. But there's no way to verify who's actually AI-native vs who just lists "AI tools" on their LinkedIn. ShipCred solves this with GitHub-verified proof-of-work scoring.
+The GTM Engineer role grew 205% from 2024-2025. Companies like Ramp, Intercom, and Apollo are hiring marketers who commit code. But there's no way to verify who's actually AI-native vs who just lists "AI tools" on their LinkedIn. GTM Commit solves this with GitHub-verified proof-of-work scoring.
 
 ### Revenue Model (Freemium)
 
-- **Free tier:** Public profile, GitHub integration, basic ShipCred Score, "Powered by ShipCred" badge
+- **Free tier:** Public profile, GitHub integration, basic GTM Commit Score, "Powered by GTM Commit" badge
 - **Pro (future):** Remove badge, custom domain, enhanced analytics, priority in directory
 - **Enterprise (future):** Team profiles, bulk verification, API access for recruiters
 
 ### Viral Growth Mechanics (Built into v1)
 
-1. **Branded URL:** shipcred.io/username on every share — each profile is a marketing page
-2. **"Powered by ShipCred" badge:** On all free profiles, links back to signup
+1. **Branded URL:** gtmcommit.com/username on every share — each profile is a marketing page
+2. **"Powered by GTM Commit" badge:** On all free profiles, links back to signup
 3. **Screenshot-worthy profile cards:** OG image auto-generated for social sharing
-4. **Community leaderboard:** Top builders ranked by ShipCred Score — creates FOMO
+4. **Community leaderboard:** Top builders ranked by GTM Commit Score — creates FOMO
 5. **No signup to browse:** Real profiles visible on landing page before any account creation
 
 ---
@@ -61,7 +61,7 @@ The GTM Engineer role grew 205% from 2024-2025. Companies like Ramp, Intercom, a
 ## Repository Structure
 
 ```
-shipcred/
+gtmcommit/
 ├── CLAUDE.md                          ← This file
 ├── README.md
 ├── package.json
@@ -79,12 +79,12 @@ shipcred/
 │   │   └── callback/page.tsx          ← OAuth callback handler
 │   │
 │   ├── (marketing)/
-│   │   ├── about/page.tsx             ← What is ShipCred, the movement
+│   │   ├── about/page.tsx             ← What is GTM Commit, the movement
 │   │   └── leaderboard/page.tsx       ← Full community leaderboard (public, no auth)
 │   │
 │   ├── (app)/
 │   │   ├── layout.tsx                 ← Authenticated layout (sidebar/nav)
-│   │   ├── dashboard/page.tsx         ← Your ShipCred Score, recent activity, profile preview
+│   │   ├── dashboard/page.tsx         ← Your GTM Commit Score, recent activity, profile preview
 │   │   ├── profile/
 │   │   │   ├── edit/page.tsx          ← Edit profile: bio, tools, links, portfolio items
 │   │   │   └── connect/page.tsx       ← Connect GitHub, manage OAuth permissions
@@ -94,7 +94,7 @@ shipcred/
 │   │   └── settings/page.tsx          ← Account settings, notification prefs, delete account
 │   │
 │   ├── [username]/
-│   │   └── page.tsx                   ← PUBLIC profile page (shipcred.io/username) — THE viral page
+│   │   └── page.tsx                   ← PUBLIC profile page (gtmcommit.com/username) — THE viral page
 │   │
 │   └── api/
 │       ├── auth/
@@ -112,7 +112,7 @@ shipcred/
 │       │   └── verify/route.ts       ← Trigger verification of a proof URL
 │       ├── leaderboard/route.ts       ← Leaderboard data (cached)
 │       ├── og/[username]/route.tsx    ← Dynamic OG image generation
-│       └── score/calculate/route.ts   ← ShipCred Score calculation engine
+│       └── score/calculate/route.ts   ← GTM Commit Score calculation engine
 │
 ├── components/
 │   ├── landing/
@@ -121,18 +121,18 @@ shipcred/
 │   │   ├── HowItWorks.tsx             ← 3-step: Connect → Verify → Share
 │   │   ├── FeaturedProfiles.tsx        ← Real profiles from community (no signup to view)
 │   │   ├── LeaderboardPreview.tsx      ← Top 10 from leaderboard
-│   │   ├── CTA.tsx                    ← "Get Your ShipCred" button
-│   │   └── Footer.tsx                 ← Links + "Powered by ShipCred" branding
+│   │   ├── CTA.tsx                    ← "Get Your GTM Commit" button
+│   │   └── Footer.tsx                 ← Links + "Powered by GTM Commit" branding
 │   │
 │   ├── profile/
 │   │   ├── ProfileCard.tsx            ← The shareable profile card (used on profile page + OG)
-│   │   ├── ShipCredScore.tsx          ← Score display with tier badge (Shipper/Builder/Captain/Legend)
+│   │   ├── GtmCommitScore.tsx          ← Score display with tier badge (Shipper/Builder/Captain/Legend)
 │   │   ├── GitHubStats.tsx            ← AI commit heatmap, tool breakdown
 │   │   ├── ToolBadges.tsx             ← Claude Code, Cursor, Clay, etc. badges
 │   │   ├── PortfolioGrid.tsx          ← Grid of shipped projects
 │   │   ├── PortfolioItem.tsx          ← Individual project card (screenshot, URL, description)
 │   │   ├── VouchSection.tsx           ← Community endorsements/vouches
-│   │   └── PoweredByBadge.tsx         ← "Powered by ShipCred" footer badge (free tier)
+│   │   └── PoweredByBadge.tsx         ← "Powered by GTM Commit" footer badge (free tier)
 │   │
 │   ├── leaderboard/
 │   │   ├── LeaderboardTable.tsx       ← Ranked list with score, tier, top tools
@@ -165,7 +165,7 @@ shipcred/
 │   │   ├── url.ts                     ← Generic URL verification (DNS check, HTTP status, meta tag ownership)
 │   │   └── screenshot.ts             ← Auto-capture screenshot of verified URLs via Puppeteer/API
 │   ├── scoring/
-│   │   ├── calculate.ts               ← ShipCred Score algorithm
+│   │   ├── calculate.ts               ← GTM Commit Score algorithm
 │   │   └── tiers.ts                   ← Score → Tier mapping (Shipper/Builder/Captain/Legend)
 │   ├── og/
 │   │   └── generate.ts               ← OG image template (Satori/React → PNG)
@@ -200,7 +200,7 @@ CREATE TABLE profiles (
   user_id UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
   
   -- Identity
-  username TEXT UNIQUE NOT NULL,          -- shipcred.io/username
+  username TEXT UNIQUE NOT NULL,          -- gtmcommit.com/username
   display_name TEXT NOT NULL,
   bio TEXT,                               -- Max 280 chars
   avatar_url TEXT,
@@ -222,9 +222,9 @@ CREATE TABLE profiles (
   github_scopes TEXT[],                   -- ['repo', 'read:user'] etc.
   last_github_sync_at TIMESTAMPTZ,
   
-  -- ShipCred Score (denormalized for fast queries)
-  shipcred_score INTEGER DEFAULT 0,       -- 0-1000
-  shipcred_tier TEXT DEFAULT 'unranked',  -- 'unranked' | 'shipper' | 'builder' | 'captain' | 'legend'
+  -- GTM Commit Score (denormalized for fast queries)
+  gtmcommit_score INTEGER DEFAULT 0,       -- 0-1000
+  gtmcommit_tier TEXT DEFAULT 'unranked',  -- 'unranked' | 'shipper' | 'builder' | 'captain' | 'legend'
   score_breakdown JSONB DEFAULT '{}',     -- { github: 450, portfolio: 200, vouches: 50, tools: 100 }
   
   -- Flags
@@ -239,8 +239,8 @@ CREATE TABLE profiles (
 
 CREATE UNIQUE INDEX idx_profiles_user ON profiles(user_id);
 CREATE UNIQUE INDEX idx_profiles_username ON profiles(username);
-CREATE INDEX idx_profiles_score ON profiles(shipcred_score DESC);
-CREATE INDEX idx_profiles_tier ON profiles(shipcred_tier);
+CREATE INDEX idx_profiles_gtmcommit_score ON profiles(gtmcommit_score DESC);
+CREATE INDEX idx_profiles_gtmcommit_tier ON profiles(gtmcommit_tier);
 CREATE INDEX idx_profiles_featured ON profiles(is_featured) WHERE is_featured = true;
 CREATE INDEX idx_profiles_github ON profiles(github_username) WHERE github_username IS NOT NULL;
 
@@ -664,7 +664,7 @@ export async function syncGitHubData(profileId: string, accessToken: string) {
   // 5. Auto-verify tool declarations based on detected commits
   await autoVerifyTools(profileId);
   
-  // 6. Recalculate ShipCred Score
+  // 6. Recalculate GTM Commit Score
   await recalculateScore(profileId);
 }
 ```
@@ -849,7 +849,7 @@ This architecture is designed to be extended without schema changes:
 
 ---
 
-## ShipCred Score Algorithm
+## GTM Commit Score Algorithm
 
 ```typescript
 // lib/scoring/calculate.ts
@@ -862,7 +862,7 @@ interface ScoreBreakdown {
   total: number;        // 0-1000 points
 }
 
-export function calculateShipCredScore(data: ProfileData): ScoreBreakdown {
+export function calculateGtmCommitScore(data: ProfileData): ScoreBreakdown {
   
   // === GITHUB SCORE (0-500) — Highest weight, verified proof ===
   let github = 0;
@@ -966,10 +966,10 @@ export async function GET(request: Request, { params }: { params: { username: st
             padding: '20px 40px',
             borderRadius: '20px',
           }}>
-            {profile.shipcred_score}
+            {profile.gtmcommit_score}
           </div>
           <div style={{ color: '#1f2937', fontSize: '24px' }}>
-            ShipCred Score · {profile.shipcred_tier.toUpperCase()}
+            GTM Commit Score · {profile.gtmcommit_tier.toUpperCase()}
           </div>
         </div>
         
@@ -980,7 +980,7 @@ export async function GET(request: Request, { params }: { params: { username: st
           justifyContent: 'space-between',
           alignItems: 'center',
         }}>
-          <div style={{ color: '#9ca3af', fontSize: '18px' }}>shipcred.io/{profile.username}</div>
+          <div style={{ color: '#9ca3af', fontSize: '18px' }}>gtmcommit.com/{profile.username}</div>
           <div style={{ color: '#9ca3af', fontSize: '18px' }}>Talk is cheap. Commits aren't.</div>
         </div>
       </div>
@@ -1008,7 +1008,7 @@ GITHUB_CLIENT_SECRET=your-github-client-secret
 
 # App
 NEXT_PUBLIC_APP_URL=http://localhost:3000
-NEXT_PUBLIC_APP_NAME=ShipCred
+NEXT_PUBLIC_APP_NAME=GTM Commit
 
 # Resend (email)
 RESEND_API_KEY=re_your-key
@@ -1036,12 +1036,12 @@ Talk is cheap. Commits aren't.
 **Subhead (p, muted):**
 ```
 The proof-of-work network for AI-native GTM professionals.
-Connect GitHub. Show what you've shipped. Get your ShipCred.
+Connect GitHub. Show what you've shipped. Get your GTM Commit.
 ```
 
 **Primary CTA button (large, green/accent):**
 ```
-Get Your ShipCred →
+Get Your GTM Commit →
 ```
 Links to GitHub OAuth flow.
 
@@ -1053,10 +1053,10 @@ Join [X] builders who prove they ship — not just talk.
 
 **Right side visual:** An animated mock ProfileCard component showing:
 - Avatar, name "Sarah Chen", role "Growth Engineer"
-- ShipCred Score: 724 (Captain tier)
+- GTM Commit Score: 724 (Captain tier)
 - Tool badges: Claude Code (verified), Cursor (verified), Clay
 - Mini heatmap showing commit activity
-- "Powered by ShipCred" badge at bottom
+- "Powered by GTM Commit" badge at bottom
 
 This mock card should use real components (ProfileCard, ToolBadges, etc.) with hardcoded data so visitors see exactly what their profile will look like.
 
@@ -1092,9 +1092,9 @@ Title: The Doer
 - Proof: ✅ Verified on GitHub
 ```
 
-**Card 3 — "The ShipCred Profile" (accent/primary, slightly elevated):**
+**Card 3 — "The GTM Commit Profile" (accent/primary, slightly elevated):**
 ```
-Title: The ShipCred Profile
+Title: The GTM Commit Profile
 - Auto-detects AI commits from GitHub
 - Verifies Claude Code, Cursor, Copilot usage
 - Portfolio of shipped projects
@@ -1130,8 +1130,8 @@ Body: Add your shipped projects, declare your tools, write your bio. Other build
 **Step 3:**
 ```
 Icon: 🚀
-Title: Share Your ShipCred
-Body: Your profile at shipcred.io/username is your verifiable credential. Drop it in your LinkedIn bio, Twitter, job applications. Let the commits speak for themselves.
+Title: Share Your GTM Commit
+Body: Your profile at gtmcommit.com/username is your verifiable credential. Drop it in your LinkedIn bio, Twitter, job applications. Let the commits speak for themselves.
 ```
 
 ---
@@ -1140,7 +1140,7 @@ Body: Your profile at shipcred.io/username is your verifiable credential. Drop i
 
 **Section headline (h2):**
 ```
-Your ShipCred Score: 0 to 1,000
+Your GTM Commit Score: 0 to 1,000
 ```
 
 **Subhead:**
@@ -1158,7 +1158,7 @@ Portfolio Projects — up to 250 pts
 Shipped work you can show. URLs, screenshots, walkthroughs. Community-vouched projects score higher.
 
 Peer Vouches — up to 150 pts
-Other ShipCred members endorse your work. One vouch per person. You can't vouch for yourself.
+Other GTM Commit members endorse your work. One vouch per person. You can't vouch for yourself.
 
 Tool Declarations — up to 100 pts
 Self-declared tools you use. Lowest weight. Verified automatically if detected in your commits.
@@ -1218,7 +1218,7 @@ Your code stays yours. We just count the commits.
 
 **Headline (h2):**
 ```
-What's your ShipCred?
+What's your GTM Commit?
 ```
 
 **Subhead:**
@@ -1238,7 +1238,7 @@ Connect GitHub & Get Scored →
 
 **Layout:** Simple footer with links and branding.
 
-**Left:** ShipCred logo + tagline "Talk is cheap. Commits aren't."
+**Left:** GTM Commit logo + tagline "Talk is cheap. Commits aren't."
 
 **Center links:** About · Leaderboard · GitHub · Twitter
 
@@ -1246,7 +1246,7 @@ Connect GitHub & Get Scored →
 
 **Bottom line (very small):**
 ```
-© 2026 ShipCred. All rights reserved.
+© 2026 GTM Commit. All rights reserved.
 ```
 
 ---
@@ -1280,8 +1280,8 @@ module.exports = {
   daisyui: {
     themes: [
       {
-        shipcred: {
-          'primary': '#10b981',           // Emerald green — the ShipCred color. Scores, verified badges, CTAs.
+        gtmcommit: {
+          'primary': '#10b981',           // Emerald green — the GTM Commit color. Scores, verified badges, CTAs.
           'primary-content': '#ffffff',
           'secondary': '#6366f1',         // Indigo — tier badges, secondary actions
           'secondary-content': '#ffffff',
@@ -1315,7 +1315,7 @@ The only exception: if a display font is needed for the hero headline ("Talk is 
 
 Lean heavily on stock DaisyUI components — this is what makes Marc Lou's products look good with minimal effort:
 
-- **`stat`** — For ShipCred Score display (big number, label, description)
+- **`stat`** — For GTM Commit Score display (big number, label, description)
 - **`card`** — For profile cards, portfolio items, leaderboard entries
 - **`badge`** — For tool badges (Claude Code, Cursor, etc.) and tier badges (Shipper, Builder, Captain, Legend)
 - **`avatar`** — For profile pictures with online/verified indicators
@@ -1332,15 +1332,15 @@ The ProfileCard component is the single most important visual element — it's w
 
 1. **Self-contained** — Looks complete and impressive without any surrounding page context
 2. **Screenshot-worthy** — Clean enough to screenshot on mobile and share as an image
-3. **Branded** — "shipcred.io/username" visible on the card itself (not just in the URL bar)
+3. **Branded** — "gtmcommit.com/username" visible on the card itself (not just in the URL bar)
 4. **Colorful but professional** — Use the emerald green for the score, indigo for tier, amber for Legend tier. White background so it pops on any social media feed.
 
 **Card layout (top to bottom):**
 - Avatar + Name + Role + Company (one line)
-- ShipCred Score (large number) + Tier badge
+- GTM Commit Score (large number) + Tier badge
 - Score breakdown mini-bars (GitHub / Portfolio / Vouches / Tools)
 - Tool badges row (verified tools get a checkmark overlay)
-- "shipcred.io/username" + Powered by ShipCred (bottom)
+- "gtmcommit.com/username" + Powered by GTM Commit (bottom)
 
 ### OG Image
 
@@ -1367,7 +1367,7 @@ The OG image (for social sharing) should match the profile card design but optim
 - [ ] Implement GitHub API client (fetch repos, commits)
 - [ ] Build AI tool detection engine (detect-ai.ts)
 - [ ] Build sync pipeline (fetch → detect → store → score)
-- [ ] Create ShipCred Score calculation engine
+- [ ] Create GTM Commit Score calculation engine
 - [ ] Test end-to-end: login with GitHub → sync commits → see score in DB
 
 ### Day 2: Profile Pages + Landing Page
@@ -1375,7 +1375,7 @@ The OG image (for social sharing) should match the profile card design but optim
 - [ ] Build ProfileCard component (score, tier badge, heatmap, tools)
 - [ ] Build PortfolioGrid + PortfolioItem components
 - [ ] Build VouchSection component
-- [ ] Implement "Powered by ShipCred" badge (free tier)
+- [ ] Implement "Powered by GTM Commit" badge (free tier)
 - [ ] Build OG image generation (api/og/[username])
 - [ ] Build landing page (Hero, Problem, HowItWorks, FeaturedProfiles, CTA)
 - [ ] Build leaderboard page (/leaderboard) — public, no auth
@@ -1400,7 +1400,7 @@ The OG image (for social sharing) should match the profile card design but optim
 - [ ] Stripe integration for Pro tier (badge removal, custom domain)
 - [ ] Embeddable profile card (script tag for personal sites)
 - [ ] Community Slack/Discord integration
-- [ ] Programmatic SEO pages (shipcred.io/tools/claude-code, shipcred.io/roles/gtm-engineer)
+- [ ] Programmatic SEO pages (gtmcommit.com/tools/claude-code, gtmcommit.com/roles/gtm-engineer)
 
 ---
 
@@ -1420,14 +1420,14 @@ This is critical for adoption — users are giving us access to private repos:
 
 | Platform | Proof-of-work? | AI-specific? | GTM focus? | Profile as credential? |
 |---|---|---|---|---|
-| **ShipCred** | ✅ GitHub + Portfolio + Vouches | ✅ Claude Code/Cursor/Copilot detection | ✅ Marketers, SDRs, AEs | ✅ shipcred.io/username |
+| **GTM Commit** | ✅ GitHub + Portfolio + Vouches | ✅ Claude Code/Cursor/Copilot detection | ✅ Marketers, SDRs, AEs | ✅ gtmcommit.com/username |
 | Peerlist | ✅ GitHub/Dribbble/PH | ❌ | ❌ Dev/designer | ✅ peerlist.io/username |
 | LinkedIn | ❌ Self-reported | ❌ | ❌ Everyone | ❌ Not proof-based |
 | OpenAI Jobs | Partial (certs) | ✅ | ❌ Broad workforce | ❌ Not launched |
 | Fueler | ✅ Portfolio | ❌ | ❌ General | ✅ fueler.io/username |
 | IndiePage | ✅ Stripe revenue | ❌ | ❌ Indie hackers | ✅ indiepa.ge/username |
 
-**ShipCred's unique wedge:** The ONLY platform that verifies AI coding tool usage specifically for GTM professionals. No one else detects Claude Code commits and maps them to a marketer's profile.
+**GTM Commit's unique wedge:** The ONLY platform that verifies AI coding tool usage specifically for GTM professionals. No one else detects Claude Code commits and maps them to a marketer's profile.
 
 ---
 

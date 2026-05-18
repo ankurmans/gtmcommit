@@ -1,8 +1,8 @@
-# SCORING.md — ShipCred Score Algorithm (Revised)
+# SCORING.md — GTM Commit Score Algorithm (Revised)
 
 ## Scoring Philosophy
 
-The ShipCred Score (0–1000) answers one question: **how confident are we that this person actually does AI-native GTM work?**
+The GTM Commit Score (0–1000) answers one question: **how confident are we that this person actually does AI-native GTM work?**
 
 It is NOT a skill rating. It is NOT a reputation score. It is a verification confidence score. Someone scoring 800 isn't "better" than someone scoring 400 — we just have more evidence that they ship.
 
@@ -31,7 +31,7 @@ Requires human validation — peer vouches, client endorsements, or email verifi
 | Source | How It's Verified | Max Pts |
 |---|---|---|
 | Vouched portfolio items | 2+ peers vouch for a portfolio item | 120 |
-| Client/employer endorsements (v2) | Email-verified, endorser doesn't need ShipCred account | 100 |
+| Client/employer endorsements (v2) | Email-verified, endorser doesn't need GTM Commit account | 100 |
 | Vouched workflow documentation | 2+ vouches on workflow uploads | 70 |
 | Vouched uploaded artifacts | 2+ vouches on CLAUDE.md, .cursorrules, MCP files | 60 |
 | Vouched video proof | 2+ vouches on Loom/YouTube walkthroughs | 60 |
@@ -371,7 +371,7 @@ function scoreConsistency(profile: FullProfile): number {
 ## Master Score Calculator
 
 ```typescript
-interface ShipCredScore {
+interface GtmCommitScore {
   total: number;
   tier1: number;
   tier2: number;
@@ -380,7 +380,7 @@ interface ShipCredScore {
   breakdown: ScoreBreakdown;
 }
 
-function calculateShipCredScore(profile: FullProfile): ShipCredScore {
+function calculateGtmCommitScore(profile: FullProfile): GtmCommitScore {
   // === TIER 1 ===
   const githubCommits = scoreGitHubCommits(profile.ai_commits);
   const platformDeploys = scorePlatformDeployments(profile.external_proofs);

@@ -38,7 +38,7 @@ export default function PrivacyPage() {
             <h2 className="font-display text-2xl font-bold text-fg-primary pt-4">2. How We Use Your Information</h2>
             <ul className="list-disc pl-5 space-y-2">
               <li>To create and maintain your GTM Commit profile</li>
-              <li>To calculate your ShipCred Score based on verified AI-assisted commits</li>
+              <li>To calculate your GTM Commit Score based on verified AI-assisted commits</li>
               <li>To display your public profile at gtmcommit.com/username</li>
               <li>To generate dynamic Open Graph images for social sharing</li>
               <li>To power the community leaderboard</li>
@@ -50,7 +50,7 @@ export default function PrivacyPage() {
             <p>We do not sell your personal information. We may share information with:</p>
             <ul className="list-disc pl-5 space-y-2">
               <li><strong>Service providers:</strong> Supabase (database and authentication), Vercel (hosting), PostHog (analytics), and Resend (email) — each bound by their own privacy policies</li>
-              <li><strong>Public profile:</strong> Information you add to your profile (display name, bio, role, portfolio items, ShipCred Score, and tool badges) is publicly visible by design</li>
+              <li><strong>Public profile:</strong> Information you add to your profile (display name, bio, role, portfolio items, GTM Commit Score, and tool badges) is publicly visible by design</li>
               <li><strong>Legal requirements:</strong> If required by law, regulation, or legal process</li>
             </ul>
 

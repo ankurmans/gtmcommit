@@ -1,16 +1,16 @@
-# ShipCred
+# GTM Commit
 
 **Talk is cheap. Commits aren't.**
 
-The proof-of-work network for AI-native GTM professionals. Connect GitHub. Show what you've shipped. Get your ShipCred.
+The proof-of-work network for AI-native GTM professionals. Connect GitHub. Show what you've shipped. Get your GTM Commit.
 
 → [gtmcommit.com](https://gtmcommit.com)
 
 ---
 
-## What is ShipCred?
+## What is GTM Commit?
 
-Everyone says they're "AI-native" on LinkedIn. ShipCred proves it.
+Everyone says they're "AI-native" on LinkedIn. GTM Commit proves it.
 
 Connect your GitHub and we automatically detect your AI-assisted commits — Claude Code, Cursor, Copilot, Aider, and more. Your profile at `gtmcommit.com/username` becomes your verifiable credential showing you actually ship, not just talk.
 
@@ -20,9 +20,9 @@ Connect your GitHub and we automatically detect your AI-assisted commits — Cla
 
 1. **Connect GitHub** — We scan your commits (including private repos) for AI tool signatures
 2. **Build Your Profile** — Add your portfolio, declare your tools, get vouched by peers
-3. **Share Your ShipCred** — Your profile URL is your proof. Share it everywhere.
+3. **Share Your GTM Commit** — Your profile URL is your proof. Share it everywhere.
 
-## ShipCred Score
+## GTM Commit Score
 
 Your score (0-1000) is calculated from four proof tiers:
 

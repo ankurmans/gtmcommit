@@ -26,7 +26,7 @@ export default function TermsPage() {
             <ul className="list-disc pl-5 space-y-2">
               <li>Misrepresent your identity or affiliation</li>
               <li>Submit false, misleading, or fraudulent information</li>
-              <li>Attempt to manipulate your ShipCred Score through artificial means</li>
+              <li>Attempt to manipulate your GTM Commit Score through artificial means</li>
               <li>Interfere with or disrupt the Service or its infrastructure</li>
               <li>Scrape, crawl, or use automated means to access the Service without permission</li>
               <li>Harass, abuse, or harm other users</li>
@@ -40,8 +40,8 @@ export default function TermsPage() {
             <p>You retain ownership of any content you submit to the Service (bio, portfolio items, project descriptions). By submitting content, you grant us a non-exclusive, worldwide, royalty-free license to display that content as part of the Service, including on your public profile page and in social sharing previews (e.g., Open Graph images).</p>
             <p>You are solely responsible for the content you submit and represent that you have the right to share it.</p>
 
-            <h2 className="font-display text-2xl font-bold text-fg-primary pt-4">6. ShipCred Score</h2>
-            <p>Your ShipCred Score is calculated algorithmically based on verified GitHub commits, portfolio items, peer vouches, and tool declarations. We reserve the right to modify the scoring algorithm at any time. The score is provided for informational purposes and does not constitute a certification, endorsement, or guarantee of skills or competence.</p>
+            <h2 className="font-display text-2xl font-bold text-fg-primary pt-4">6. GTM Commit Score</h2>
+            <p>Your GTM Commit Score is calculated algorithmically based on verified GitHub commits, portfolio items, peer vouches, and tool declarations. We reserve the right to modify the scoring algorithm at any time. The score is provided for informational purposes and does not constitute a certification, endorsement, or guarantee of skills or competence.</p>
 
             <h2 className="font-display text-2xl font-bold text-fg-primary pt-4">7. Intellectual Property</h2>
             <p>The Service, including its design, code, branding, and content (excluding user-submitted content), is owned by KMF Ventures LLC and protected by applicable intellectual property laws. You may not copy, modify, distribute, or create derivative works from the Service without our prior written consent.</p>

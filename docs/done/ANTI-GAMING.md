@@ -1,8 +1,8 @@
-# ANTI-GAMING.md — ShipCred Integrity Framework
+# ANTI-GAMING.md — GTM Commit Integrity Framework
 
 ## Overview
 
-The ShipCred score is only valuable if it's trustworthy. If someone can fake a Legend score, the entire platform is worthless. This document defines every known gaming vector and the countermeasure for each.
+The GTM Commit score is only valuable if it's trustworthy. If someone can fake a Legend score, the entire platform is worthless. This document defines every known gaming vector and the countermeasure for each.
 
 **Design principle:** Make gaming harder than actually building. The effort required to fake a 500+ score should exceed the effort of just shipping real work and getting vouches.
 
@@ -291,17 +291,17 @@ function detectVouchRing(vouches: Vouch[]): VouchRingResult {
 
 ### 10. Throwaway Vouch Accounts
 
-**Attack:** Create a GitHub account, sign up for ShipCred, vouch for a friend, abandon the account.
+**Attack:** Create a GitHub account, sign up for GTM Commit, vouch for a friend, abandon the account.
 
 **Rules:**
-- **Minimum score to vouch:** Voucher must have ≥50 ShipCred pts (Shipper tier) before their vouch counts toward anyone's score
+- **Minimum score to vouch:** Voucher must have ≥50 GTM Commit pts (Shipper tier) before their vouch counts toward anyone's score
 - **Account age minimum:** Account must be >7 days old to vouch
 - **Voucher must have at least 1 verified proof source** (GitHub connected OR 1 verified deployment OR 1 parsed upload)
 
 ```typescript
 function canVouch(voucher: Profile): boolean {
   return (
-    voucher.shipcred_score >= 50 &&
+    voucher.gtmcommit_score >= 50 &&
     daysSinceCreation(voucher.created_at) >= 7 &&
     voucher.has_any_verified_proof
   );

@@ -1,8 +1,8 @@
-# PROOF-TYPES.md — Complete ShipCred Proof-of-Work System
+# PROOF-TYPES.md — Complete GTM Commit Proof-of-Work System
 
 ## Overview
 
-ShipCred accepts proof from any source where someone demonstrates they actually use AI tools for GTM work. The system is designed to be source-agnostic — what matters is the confidence level of the verification, not where the proof comes from.
+GTM Commit accepts proof from any source where someone demonstrates they actually use AI tools for GTM work. The system is designed to be source-agnostic — what matters is the confidence level of the verification, not where the proof comes from.
 
 This document defines every proof type, how it's verified, how it scores, and the schema to support it.
 
@@ -258,7 +258,7 @@ interface APIVerificationResult {
 }
 
 // Each platform gets its own OAuth flow and data extractor
-// User goes through: ShipCred → Platform OAuth → Grant permissions → We pull usage data
+// User goes through: GTM Commit → Platform OAuth → Grant permissions → We pull usage data
 
 // === VERCEL (Available Now) ===
 interface VercelUsageData {
@@ -445,12 +445,12 @@ Different from peer vouches — these come from people in a position of authorit
 
 | Endorsement Type | How It Works | Verification | Tier | Points |
 |---|---|---|---|---|
-| Client Endorsement | User requests endorsement, client receives email with one-click verify | Email verification + no ShipCred account needed | Tier 2 | 30 each |
+| Client Endorsement | User requests endorsement, client receives email with one-click verify | Email verification + no GTM Commit account needed | Tier 2 | 30 each |
 | Employer Endorsement | Same flow but marked as employer | Email verification + company domain match | Tier 2 | 35 each |
 | Advisor/Mentor Endorsement | Same flow | Email verification | Tier 2 | 20 each |
 
 **Rules:**
-- Client/employer does NOT need a ShipCred account (unlike peer vouches)
+- Client/employer does NOT need a GTM Commit account (unlike peer vouches)
 - Verification via email: system sends a unique link, endorser clicks to confirm
 - Endorser email domain cross-referenced with company claimed (prevents self-endorsement with personal email)
 - Maximum 5 client/employer endorsements count toward score
@@ -679,7 +679,7 @@ CREATE TABLE endorsements (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   profile_id UUID NOT NULL REFERENCES profiles(id) ON DELETE CASCADE,
   
-  -- Endorser info (does NOT need ShipCred account)
+  -- Endorser info (does NOT need GTM Commit account)
   endorser_name TEXT NOT NULL,
   endorser_email TEXT NOT NULL,            -- For verification, never publicly displayed
   endorser_title TEXT,                     -- "VP Marketing"
