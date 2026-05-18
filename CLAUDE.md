@@ -1436,7 +1436,7 @@ This is critical for adoption — users are giving us access to private repos:
 1. **Light mode by default.** Clean, professional, shareable. Dark mode available as toggle. Light profiles pop on LinkedIn and Twitter feeds.
 2. **Profile cards designed for screenshots.** Every profile generates a visual worth posting. White background, bold score, clean layout — looks premium in any social feed.
 3. **Score is prominent.** The number IS the product. Large, bold, emerald green. Like a credit score for AI-native builders.
-4. **Proprietary, closed-source.** Builds a defensible moat. Trust is established through a clear privacy policy and transparent data practices, not source code access.
+4. **Open source (MIT).** Released as open source to invite community contribution and signal "we ship what we preach." Trust is established through a clear privacy policy, transparent data practices, AND open source code.
 5. **No email signup.** GitHub OAuth only. This IS the filter — if you don't have GitHub, the core value prop doesn't apply to you. (Future: add Google OAuth for portfolio-only profiles.)
 6. **Professional, not developer-y.** No monospace fonts, no terminal aesthetics. The user is a marketer who uses Claude Code, not a developer who does marketing. The design should make non-technical people look impressive.
 

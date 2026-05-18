@@ -54,9 +54,9 @@ Your score (0-1000) is calculated from four proof tiers:
 
 ## License
 
-Copyright © 2026 KMF Ventures LLC. All rights reserved.
+MIT — see [LICENSE](LICENSE).
 
-This software is proprietary and confidential. Unauthorized copying, distribution, or modification is strictly prohibited.
+Contributions welcome. If you're an AI-native GTM builder, we'd love your help making the proof-of-work network better.
 
 ---
 
