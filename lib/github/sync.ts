@@ -13,17 +13,28 @@ function sixMonthsAgo(): string {
   return d.toISOString();
 }
 
-export async function syncGitHubData(profileId: string, accessToken: string) {
+export async function syncGitHubData(
+  profileId: string,
+  accessToken: string,
+  existingJobId?: string,
+) {
   const supabase = createAdminClient();
 
-  // Create sync job
-  const { data: job } = await supabase
-    .from('github_sync_jobs')
-    .insert({ profile_id: profileId, status: 'running', started_at: new Date().toISOString() })
-    .select('id')
-    .single();
+  let jobId = existingJobId;
+  if (jobId) {
+    await supabase
+      .from('github_sync_jobs')
+      .update({ status: 'running', started_at: new Date().toISOString() })
+      .eq('id', jobId);
+  } else {
+    const { data: job } = await supabase
+      .from('github_sync_jobs')
+      .insert({ profile_id: profileId, status: 'running', started_at: new Date().toISOString() })
+      .select('id')
+      .single();
+    jobId = job?.id;
+  }
 
-  const jobId = job?.id;
   let reposScanned = 0;
   let commitsAnalyzed = 0;
   let aiCommitsFound = 0;
@@ -103,6 +114,15 @@ export async function syncGitHubData(profileId: string, accessToken: string) {
           },
           { onConflict: 'commit_sha,profile_id' }
         );
+      }
+
+      // Write progress after each repo so the dashboard can poll live counts
+      if (jobId) {
+        await supabase.from('github_sync_jobs').update({
+          repos_scanned: reposScanned,
+          commits_analyzed: commitsAnalyzed,
+          ai_commits_found: aiCommitsFound,
+        }).eq('id', jobId);
       }
     }
 
